@@ -1,0 +1,25 @@
+<header data-role="header">
+                
+    <a id="logo" href="<?=$this->url(array('controller'=>'index', 'action'=>'index'), null, true)?>"><img src="<?=$this->baseUrl('images/logo.png')?>" alt="Dataspot Ghent" /></a>
+
+    <div class="login-widget">
+
+        <?php echo $this->loggedIn();?>
+
+        <a class="login-register-btn" data-role="button" title="Registreer Nu" href="<?=$this->url(array('controller'=>'auth', 'action'=>'register'), null, true)?>">Registreren</a>
+
+        <!-- Error message when wrong password -->
+        <?php if($this->errorMessage != ""): ?>  
+            <p class="login-fail"><?= $this->errorMessage; ?></p>  
+        <?php endif; ?>
+
+    </div>
+
+    <nav data-role="navbar">
+
+        <p>Spot nu de meest interessante locaties in Gent.</p>
+        <?php echo $this->navigation()->menu(); ?>
+
+    </nav>
+
+</header>

@@ -1,0 +1,15 @@
+<?php
+    $this->headTitle()->prepend('Profiel | ');
+?>
+
+<section id="profile-content">
+    <h1>Uw Profiel Beheren</h1>
+    <?php 
+        echo $this->form;
+        echo $this->succes;
+    ?>
+    <aside class="extra-info">
+        <a href="<?=$this->url(array('controller'=>'profile', 'action'=>'editemail'), null, true)?>">E-mailadres wijzigen</a>
+        <p id="username-message">Uw gebruikersnaam kan u niet wijzigen.</p>
+    </aside>
+</section>

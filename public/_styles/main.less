@@ -1,0 +1,432 @@
+@secondary_color: #d58e48;
+
+@title-font: Helvetica, Arial, sans-serif;
+@text-font: Verdana, Helvetica, Arial, sans-serif;
+@text-size: 14px;
+@title-size: 20px;
+
+@font-face 
+{   font-family: 'open_sans';
+    src: url('_styles/fonts/opensans-regular-webfont.eot');
+    src: url('_styles/fonts/opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('_styles/fonts/opensans-regular-webfont.woff') format('woff'),
+         url('_styles/fonts/opensans-regular-webfont.ttf') format('truetype'),
+         url('_styles/fonts/opensans-regular-webfont.svg#open_sansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;}
+
+.rounded(@radius: 5px)
+{   -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;}
+
+.background(@gradient_dark: #2D2D2D, @gradient_light: #444)
+{   background: @gradient_dark; /* Old browsers */
+    background: -moz-linear-gradient(top,  @gradient_light 0%, @gradient_dark 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, 0%, 0%, 0% 100%, from(@gradient_light), to(@gradient_dark)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  @gradient_light 0%,@gradient_dark 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, @gradient_light 0%,@gradient_dark 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, @gradient_light 0%,@gradient_dark 100%); /* IE10+ */
+    background: linear-gradient(to bottom, @gradient_light 0%,@gradient_dark 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#444', endColorstr='#2D2D2D',GradientType=0 ); /* IE6-9 */}
+
+/*============================================GENERAL============================================
+===============================================================================================*/
+html, body
+{   width: 100%;
+    height: 100%;
+    font-family: @text-font;}
+
+body
+{   background: #222;
+    background: url(images/background.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/background.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/background.jpg', sizingMethod='scale')";}
+
+h1
+{   margin-bottom: 15px;
+    padding-bottom: 10px;
+    font-weight: normal;}
+
+#wrapper
+{   width: 100%;
+    min-height: 100%;
+    margin: 0 auto;}
+
+section[data-role="content"]
+{   padding-bottom: 90px;}
+
+/*============================================HEADER=============================================
+===============================================================================================*/
+header.ui-bar-a, header a#logo, header a#logo .ui-btn-inner, header nav ul li a
+{   border: none !important;}
+
+header
+{   padding-top: 10px;
+
+    a#logo
+    {   position: static;
+        background: none;
+        box-shadow: none;
+        -moz-box-shadow: none;
+        -webkit-box-shadow: none;
+    }
+
+    nav
+    {   height: 40px;
+        margin: 0 15px;
+        .rounded(8px 8px 0 0);
+        .background();
+
+        ul
+        {   width: 40%;
+            right: 20px;
+
+            li a, li a .ui-btn-inner
+            {   height: 40px;
+                border: none;
+                
+                .ui-btn-text
+                {   top: 4px;
+                    font-family: 'open_sans';}
+            }
+            
+            li a:hover
+            {   height: 42px;
+                top: -1px;
+                background: url(images/main-nav.png) no-repeat;
+                background-size: 100% 100%;
+
+                .ui-btn-text
+                {   top: 5px;
+                    color: @secondary_color;}
+            }
+        }
+
+        p
+        {   width: 56%;
+            font-size: @text-size;
+            display: inline-block;
+            font-family: @text-font;
+            margin: 12px 0 12px 10px;}
+
+        .ui-btn-active, .active a
+        {   color: @secondary_color;
+            background: url(images/main-nav.png) no-repeat;
+            background-size: 100% 100%;
+            height: 42px;
+            top: -1px;
+
+            .ui-btn-text
+            {   top: 5px !important;}
+        }
+            
+        .ui-btn-active:hover .ui-btn-text
+        {   top: 4px;}
+    }
+    
+    .login-widget
+    {   position: absolute;
+        top: 8px;
+        right: 15px;
+        width: 274px;
+        
+        dt, label
+        {   font-size: 12px;
+            text-align: right;
+            width: 100px;
+            display: inline-block;
+            padding-right: 5px;
+            vertical-align: top;
+            margin: 3px 0 0 0;}
+        
+        dd, dd div, input
+        {   min-width: 150px;
+            min-height: 20px;
+            display: inline-block;}
+        
+        .ui-submit
+        {   margin: 2px 0 2px 108px;}
+
+        .ui-submit, #login
+        {   min-width: 79px;
+            display: inline-block;
+
+            .ui-btn-inner
+            {   font-size: 10px;
+                padding: 0.5em 0;}
+        }
+        
+        input
+        {   padding: 0 !important;
+            font-size: 12px;}
+
+        div.ui-input-text
+        {   padding: 0 6px;}
+
+        .logged-in
+        {   text-align: right;
+            margin-top: 10px;
+            float: right;
+
+            p, a
+            {   display: block;}
+            
+            p span
+            {   color: @secondary_color;}
+            
+            p
+            {   font-size: 20px;}
+
+            a
+            {   width: 80px;
+                margin: 10px 0 0 0;
+                float: right;}
+        }
+    }
+    
+    .ui-btn-active
+    {   background: @secondary_color;}
+
+    .errors, .login-fail
+    {   color: red;
+        list-style: none;
+        font-size: 10px;}
+
+    .login-fail
+    {   margin-top: -15px;
+        text-align: right;}
+
+    .login-register-btn
+    {   width: 79px;
+        margin: 0;
+        position: relative;
+        top: -25px;
+        left: 192px;
+
+        .ui-btn-inner
+        {   font-size: 10px;
+            padding: 0.5em 0;}
+    }
+}
+
+/*========================================DATASPOT PAGE==========================================
+===============================================================================================*/
+.content-home, #datagraph-content
+{   overflow: hidden;
+    position: absolute;
+    top: 182px;
+    bottom: 85px;
+    left: 15px;
+    right: 15px;}
+
+#map-controls
+{   width: 32%;
+    height: 100%;
+    float: left;
+    .background();}
+
+#map-canvas
+{   width: 65%;
+    height: 100%;
+    float: right;
+    margin-right: 2px;}
+
+/*=======================================DATAGRAPH PAGE==========================================
+===============================================================================================*/
+#datagraph-content
+{   .background(); }
+
+
+/*=========================================LOGIN PAGE============================================
+===============================================================================================*/
+#login-content
+{   text-align: center;
+
+    p, img
+    {   margin-top: 20px;}
+}
+
+/*=========================================ABOUT PAGE============================================
+===============================================================================================*/
+#about-content, #login-content, #profile-content, #datagraph-content
+{   margin: 0 10px;}
+
+#about-content
+{   
+    h1
+    {   font-size: @title-size;
+        padding: 0;
+        font-family: @title-font;
+        color: @secondary_color;}
+
+    img
+    {   float: left;
+        margin: 0 20px 0 0;}
+
+    p
+    {   line-height: 1.5;
+        margin-bottom: 10px;}
+
+    a:hover
+    {   color: @secondary_color;}
+}
+
+/*======================================REGISTRATION PAGE========================================
+===============================================================================================*/
+#registration-div
+{   .background();
+    width: 600px;
+    padding: 15px;
+    .rounded();
+    margin: 0 auto 50px auto;
+
+    h1
+    {   font-size: @title-size;
+        border-bottom: 1px dashed @secondary_color;
+        color: @secondary_color;
+        width: 350px;}
+}
+
+#reg-form, #emailchange-form
+{   width: 350px;
+    display: inline-block;
+
+    input[type="text"], input[type="password"]
+    {   height: 25px;
+        width: 337px;
+        font-size: 14px;
+        padding: 0 0.4em;
+        border: 1px solid #aaa;}
+
+    dd
+    {   margin-bottom: 10px;}
+
+    input[type="text"]:focus, input[type="password"]:focus
+    {   background: #d59d65;}
+
+    .ui-corner-all, .ui-btn-corner-all
+    {   .rounded(3px);}
+
+    .ui-btn-hover-c
+    {   color: #d59d65;}
+
+    div.ui-submit
+    {   height: 25px;
+        margin: 15px auto 0 auto;
+        width: 50%;
+    
+        .ui-btn-inner
+        {   padding: 0.3em 20px;}
+    }
+    
+    .ui-body-c
+    {   border: none;}
+    
+    .errors
+    {   color: red;
+        list-style: none;
+        margin: 0 0 10px 0;}
+
+    .error-field
+    {   border: 1px solid red !important;}
+    
+}
+
+#registration-cover
+{   display: inline-block;
+    width: 35%;
+    margin: 20px 0 0 25px;
+    vertical-align: top;}
+
+/*========================================PROFILE PAGE===========================================
+===============================================================================================*/
+#profile-content
+{   position: relative;
+    width: 650px;
+    margin: 0 auto;
+    .background();
+    padding: 15px;
+
+    form
+    {   display: inline-block;}
+
+    h1
+    {   font-size: @title-size;
+        border-bottom: 1px dashed @secondary_color;;
+        color: @secondary_color;
+        width: 350px;}
+
+    dd
+    {   margin-bottom: 10px;}
+
+    .success
+    {   margin-top: 20px;
+        color: #15D115;}
+
+    input[readonly="readonly"]
+    {   color: #666;
+        border: 1px solid #666;}
+    
+    input[readonly="readonly"]:focus
+    {   background: #333;}
+
+    .extra-info
+    {   position: absolute;
+        top: 212px;
+        right: 15px;
+    
+        a:hover
+        {   color: @secondary_color;}
+
+        p
+        {   margin-top: 45px;
+            color: #666;}
+    }
+}
+
+/*=======================================EDITEMAIL PAGE==========================================
+===============================================================================================*/
+#editemail-content
+{   width: 380px;
+    margin: 0 auto;
+    .background();
+    padding: 15px;
+    
+    h1
+    {   font-size: @title-size;
+        border-bottom: 1px dashed @secondary_color;;
+        color: @secondary_color;}
+
+    div.ui-input-text
+    {   width: 379px;}
+
+    input[type="text"]
+    {   width: 367px;}
+
+    .success
+    {   margin-top: 15px;
+        color: #15D115;}
+}
+
+/*============================================FOOTER=============================================
+===============================================================================================*/
+footer.ui-footer
+{   .rounded(0 0 8px 8px);
+    .background();
+    height: 40px;
+    text-align: center;
+    font-size: @text-size;
+    margin: 15px;
+    bottom: 5px;
+    right: 0;
+    left: 0;
+    position: absolute;
+
+    p
+    {   margin-top: 12px;}
+}

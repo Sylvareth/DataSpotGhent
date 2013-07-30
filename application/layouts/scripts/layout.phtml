@@ -1,0 +1,35 @@
+<?php echo $this->doctype() . "\n"; ?>
+<html>
+    <head>
+        <?php 
+            echo $this->headMeta()      . "\n"
+               . $this->headTitle()     . "\n"
+               . $this->headLink()      . "\n"
+               . $this->headScript()    . "\n"
+        ?>
+        
+        <!--HTML5 Fix voor IE8 en ouder-->
+        <!--[if lt IE 9]>
+            <script src=<?php echo $this->baseUrl('_scripts/lib/html5shiv.js') ?>></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div data-role="page" data-url="<?=$_SERVER['REQUEST_URI']?>" id="wrapper">
+            <!-- data-url"..." to change URL after jQuery Mobile / Zend redirect (## USER EXPERIENCE ##) -->
+            
+            <?php echo $this->render('partials/header.phtml'); ?>
+            
+            <section data-role="content">
+                <?php 
+                    echo $this->layout()->content;
+                ?>
+            </section><!-- /content -->
+            
+            <?php echo $this->render('partials/footer.phtml') ?>
+            
+        </div><!-- /page -->
+        
+        <?php echo $this->inlineScript(); ?>
+    </body>
+</html>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configdata>
+    <nav>
+        <home>
+            <label>DATASPOT</label>
+            <controller>index</controller>
+            <action>index</action>
+        </home>
+        <datagraph>
+            <label>DATAGRAPH</label>
+            <controller>index</controller>
+            <action>datagraph</action>
+        </datagraph>
+        <over>
+            <label>OVER</label>
+            <controller>index</controller>
+            <action>over</action>
+        </over>
+    </nav>
+</configdata>
