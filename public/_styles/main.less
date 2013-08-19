@@ -47,18 +47,28 @@ body
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/background.jpg', sizingMethod='scale');
     -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/background.jpg', sizingMethod='scale')";}
 
-h1
-{   margin-bottom: 15px;
-    padding-bottom: 10px;
-    font-weight: normal;}
+h1, h2, h3
+{   line-height: 1;}
 
-#wrapper
-{   width: 100%;
-    min-height: 100%;
-    margin: 0 auto;}
+h1
+{   font-size: @title-size;
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    font-weight: normal;
+    font-family: @title-font;
+    color: @secondary_color;}
 
 section[data-role="content"]
-{   padding-bottom: 90px;}
+{   padding-bottom: 80px;}
+
+label
+{   cursor: default;}
+
+a, a:hover
+{   text-decoration: none;}
+
+.text-success
+{   color: #15D115;}
 
 /*============================================HEADER=============================================
 ===============================================================================================*/
@@ -89,9 +99,10 @@ header
             li a, li a .ui-btn-inner
             {   height: 40px;
                 border: none;
+                padding: 0 !important;
                 
                 .ui-btn-text
-                {   top: 4px;
+                {   top: 9px;
                     font-family: 'open_sans';}
             }
             
@@ -100,9 +111,10 @@ header
                 top: -1px;
                 background: url(images/main-nav.png) no-repeat;
                 background-size: 100% 100%;
+                text-decoration: none;
 
                 .ui-btn-text
-                {   top: 5px;
+                {   top: 10px;
                     color: @secondary_color;}
             }
         }
@@ -112,7 +124,7 @@ header
             font-size: @text-size;
             display: inline-block;
             font-family: @text-font;
-            margin: 12px 0 12px 10px;}
+            margin: 10px 0 10px 10px;}
 
         .ui-btn-active, .active a
         {   color: @secondary_color;
@@ -122,7 +134,7 @@ header
             top: -1px;
 
             .ui-btn-text
-            {   top: 5px !important;}
+            {   top: 10px !important;}
         }
             
         .ui-btn-active:hover .ui-btn-text
@@ -135,6 +147,9 @@ header
         right: 15px;
         width: 274px;
         
+        ul
+        {   margin: 0;}
+
         dt, label
         {   font-size: 12px;
             text-align: right;
@@ -145,20 +160,19 @@ header
             margin: 3px 0 0 0;}
         
         dd, dd div, input
-        {   min-width: 150px;
+        {   min-width: 140px;
             min-height: 20px;
             display: inline-block;}
         
         .ui-submit
-        {   margin: 2px 0 2px 108px;}
+        {   margin: 2px 0 2px 118px;}
 
         .ui-submit, #login
-        {   min-width: 79px;
-            display: inline-block;
+        {   min-width: 72px;
 
             .ui-btn-inner
             {   font-size: 10px;
-                padding: 0.5em 0;}
+                padding: 0;}
         }
         
         input
@@ -169,8 +183,7 @@ header
         {   padding: 0 6px;}
 
         .logged-in
-        {   text-align: right;
-            margin-top: 10px;
+        {   margin-top: 10px;
             float: right;
 
             p, a
@@ -197,44 +210,66 @@ header
         list-style: none;
         font-size: 10px;}
 
+    .errors li
+    {   line-height: 1em;}
+
     .login-fail
-    {   margin-top: -15px;
-        text-align: right;}
+    {   margin-top: -15px;}
 
     .login-register-btn
-    {   width: 79px;
+    {   width: 72px;
+        height: 21px;
         margin: 0;
         position: relative;
-        top: -25px;
-        left: 192px;
+        top: -45px;
+        left: 199px;
 
         .ui-btn-inner
         {   font-size: 10px;
-            padding: 0.5em 0;}
+            padding: 0;}
     }
 }
 
 /*========================================DATASPOT PAGE==========================================
 ===============================================================================================*/
 .content-home, #datagraph-content
-{   overflow: hidden;
-    position: absolute;
-    top: 182px;
-    bottom: 85px;
-    left: 15px;
-    right: 15px;}
+{   height: 100%;
+    width: 100%;
+    padding: 0;}
 
 #map-controls
-{   width: 32%;
+{   width: 28%;
+    padding: 10px;
+    margin: 5px 0;
     height: 100%;
-    float: left;
-    .background();}
+    display: inline-block;
+    vertical-align: top;
+    .background();
+
+    h1
+    {   border-bottom: 1px dashed @secondary_color;}
+
+    ul li
+    {   margin: 0 0 10px 0;}
+
+    ul li a
+    {   width: 100%;
+        padding: 4px 0;}
+}
 
 #map-canvas
-{   width: 65%;
-    height: 100%;
-    float: right;
-    margin-right: 2px;}
+{   position: absolute;
+    left: 32%;
+    top: 184px;
+    bottom: 85px;
+    right: 14px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2px;
+
+    p.infowindow-text
+    {   color: #000;}
+}
 
 /*=======================================DATAGRAPH PAGE==========================================
 ===============================================================================================*/
@@ -259,18 +294,14 @@ header
 #about-content
 {   
     h1
-    {   font-size: @title-size;
-        padding: 0;
-        font-family: @title-font;
-        color: @secondary_color;}
+    {   padding: 0;}
 
     img
     {   float: left;
         margin: 0 20px 0 0;}
 
     p
-    {   line-height: 1.5;
-        margin-bottom: 10px;}
+    {   line-height: 1.5;}
 
     a:hover
     {   color: @secondary_color;}
@@ -286,15 +317,14 @@ header
     margin: 0 auto 50px auto;
 
     h1
-    {   font-size: @title-size;
-        border-bottom: 1px dashed @secondary_color;
-        color: @secondary_color;
+    {   border-bottom: 1px dashed @secondary_color;
         width: 350px;}
 }
 
 #reg-form, #emailchange-form
 {   width: 350px;
     display: inline-block;
+    margin: 0;
 
     input[type="text"], input[type="password"]
     {   height: 25px;
@@ -304,7 +334,7 @@ header
         border: 1px solid #aaa;}
 
     dd
-    {   margin-bottom: 10px;}
+    {   margin: 0 0 10px 0;}
 
     input[type="text"]:focus, input[type="password"]:focus
     {   background: #d59d65;}
@@ -316,7 +346,7 @@ header
     {   color: #d59d65;}
 
     div.ui-submit
-    {   height: 25px;
+    {   height: 30px;
         margin: 15px auto 0 auto;
         width: 50%;
     
@@ -347,7 +377,7 @@ header
 ===============================================================================================*/
 #profile-content
 {   position: relative;
-    width: 650px;
+    width: 615px;
     margin: 0 auto;
     .background();
     padding: 15px;
@@ -356,17 +386,11 @@ header
     {   display: inline-block;}
 
     h1
-    {   font-size: @title-size;
-        border-bottom: 1px dashed @secondary_color;;
-        color: @secondary_color;
+    {   border-bottom: 1px dashed @secondary_color;;
         width: 350px;}
 
     dd
     {   margin-bottom: 10px;}
-
-    .success
-    {   margin-top: 20px;
-        color: #15D115;}
 
     input[readonly="readonly"]
     {   color: #666;
@@ -377,14 +401,14 @@ header
 
     .extra-info
     {   position: absolute;
-        top: 212px;
+        top: 209px;
         right: 15px;
     
         a:hover
         {   color: @secondary_color;}
 
         p
-        {   margin-top: 45px;
+        {   margin-top: 40px;
             color: #666;}
     }
 }
@@ -398,9 +422,7 @@ header
     padding: 15px;
     
     h1
-    {   font-size: @title-size;
-        border-bottom: 1px dashed @secondary_color;;
-        color: @secondary_color;}
+    {   border-bottom: 1px dashed @secondary_color;}
 
     div.ui-input-text
     {   width: 379px;}
@@ -408,9 +430,8 @@ header
     input[type="text"]
     {   width: 367px;}
 
-    .success
-    {   margin-top: 15px;
-        color: #15D115;}
+    .text-success
+    {   margin-top: 15px;}
 }
 
 /*============================================FOOTER=============================================
@@ -419,7 +440,6 @@ footer.ui-footer
 {   .rounded(0 0 8px 8px);
     .background();
     height: 40px;
-    text-align: center;
     font-size: @text-size;
     margin: 15px;
     bottom: 5px;
@@ -428,7 +448,7 @@ footer.ui-footer
     position: absolute;
 
     p
-    {   margin-top: 12px;}
+    {   margin-top: 10px;}
 }
 
 /*==========================================ERROR PAGE===========================================
@@ -436,7 +456,6 @@ footer.ui-footer
 .error-content
 {   max-width: 800px;
     margin: 0 auto;
-    text-align: center;
     
     h1, h2
     {   color: @secondary_color;

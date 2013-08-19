@@ -81,7 +81,7 @@ class ProfileController extends Zend_Controller_Action
                 $userMapper->saveUser($user);
                 
                 // Display success message
-                $succes = '<p class="success">Uw profiel werd bijgewerkt!</p>';
+                $succes = '<p class="text-success">Uw profiel werd bijgewerkt!</p>';
                 $this->view->succes = $succes;
             } else {
                 $form->populate($formData);
@@ -110,7 +110,7 @@ class ProfileController extends Zend_Controller_Action
                 $userMapper->saveUser($user);
                 
                 // Display success message
-                $succes = '<p class="success">Uw e-mailadres werd bijgewerkt!</p>';
+                $succes = '<p class="text-success">Uw e-mailadres werd bijgewerkt!</p>';
                 $this->view->succes = $succes;
             } else {
                 $form->populate($formData);

@@ -24,17 +24,19 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         
         $view->headMeta()
              ->setCharset('utf-8')
-             ->appendName('viewport','width=device-width, initial-scale=1'); //name, content
+             ->appendName('viewport','width=device-width, initial-scale=1.0'); //name, content
         
         $view->headTitle('Dataspot Ghent');
         
         $view->headLink()
              ->appendStylesheet($view->baseUrl('_styles/reset.css'))
              ->appendStylesheet($view->baseUrl('_styles/jquery.mobile-1.3.1.css'))
+             ->appendStylesheet($view->baseUrl('_styles/bootstrap.min.css'))
              ->appendStylesheet($view->baseUrl('_styles/main.less'), 'screen', true, array('rel' => 'stylesheet/less'));
         
         $view->headScript()
              ->appendFile($view->baseUrl('_scripts/lib/jquery-1.10.2.min.js'))
+             ->appendFile($view->baseUrl('_scripts/lib/bootstrap.min.js'))
              ->appendFile($view->baseUrl('_scripts/lib/jquery.mobile-1.3.1.min.js'))
              ->appendFile('http://maps.googleapis.com/maps/api/js?key=AIzaSyBhvrjN0Qel85m8tyVH1h_WCqoGnyRzDVk&sensor=true')
              ->appendFile($view->baseUrl('_scripts/lib/jquery.ui.map.min.js'))

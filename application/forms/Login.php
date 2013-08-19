@@ -29,7 +29,11 @@ class Application_Form_Login extends Zend_Form
         $login_submit = new Zend_Form_Element_Submit('login');
         $login_submit->setLabel('Inloggen')
                      ->setIgnore(true)
-                     ->removeDecorator('DtDdWrapper');
+                     ->removeDecorator('DtDdWrapper')
+                     ->setAttribs(array(
+                         'data-inline' => 'true'
+                         
+                     ));
         
 //        $register_button = new Zend_Form_Element_Button('register');
 //        $register_button->setLabel('Registreren')

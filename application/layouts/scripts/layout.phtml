@@ -14,7 +14,7 @@
         <![endif]-->
     </head>
     <body>
-        <div data-role="page" data-url="<?=$_SERVER['REQUEST_URI']?>" id="wrapper">
+        <div data-role="page" data-url="<?=$_SERVER['REQUEST_URI']?>" class="container">
             <!-- data-url"..." to change URL after jQuery Mobile / Zend redirect (## USER EXPERIENCE ##) -->
             
             <?php echo $this->render('partials/header.phtml'); ?>
@@ -32,4 +32,3 @@
         <?php echo $this->inlineScript(); ?>
     </body>
 </html>
-
