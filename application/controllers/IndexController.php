@@ -26,12 +26,12 @@ class IndexController extends Zend_Controller_Action
     {
         if(!$this->_auth->hasIdentity()){
             $this->redirect('default/index/login');
-        }
+        } 
     }
 
     public function overAction()
     {
-        // action body
+        
     }
 
     public function loginAction()

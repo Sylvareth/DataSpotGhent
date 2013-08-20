@@ -45,6 +45,9 @@ class Application_Model_User
      */
     protected $_password;
     
+    /** 
+     * @param array $values 
+     */
     public function __construct(array $values = null){
         foreach($values as $key => $value){
             $setter = 'set' . ucfirst($key);

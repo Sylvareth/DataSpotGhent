@@ -34,7 +34,7 @@ class Application_Model_UserMapper
     /**
      * Array keys have same names as form names! (populate)
      * 
-     * @param type $id
+     * @param int $id
      * @return array
      * @throws Exception 
      */
@@ -106,4 +106,3 @@ class Application_Model_UserMapper
     }
 
 }
-

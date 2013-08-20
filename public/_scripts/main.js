@@ -1,5 +1,5 @@
 var _mymap;
-var _mymapLocation = new google.maps.LatLng(51.040468, 3.73038);
+var _mymapLocation = new google.maps.LatLng(51.0500, 3.7333);
 var _myGeoMarkerImage;
 
 $(document).on('pageshow', function(){
@@ -27,7 +27,9 @@ $(document).on('pageshow', function(){
 
 // SOMETIMES LOAD MAP TWICE(!) TO PREVENT BREAKING WITH JQUERY MOBILE / ZEND
 // LOAD MAP AFTER PAGE INIT
-$(document).on("pageinit", function(){
+$(document).on("pageload", function(){
+    // REFRESH AGAIN AFTER LOAD, BUT BEFORE INITIALISING
+    $('#map-canvas').gmap('refresh');
     initialize();
 });
 
@@ -42,7 +44,7 @@ $(document).ready(function(){
 // INITIALISE GOOGLE MAPS
 function initialize(){
     // SETUP CUSTOM MARKER
-    _myGeoMarkerImage = new google.maps.MarkerImage('images/my-google-marker.png', new google.maps.Size(64, 64));
+    _myGeoMarkerImage = new google.maps.MarkerImage('/DataSpotGhent/public/images/my-google-marker.png', new google.maps.Size(64, 64));
     
     // MAP OPTIONS
     var mapOptions = {
