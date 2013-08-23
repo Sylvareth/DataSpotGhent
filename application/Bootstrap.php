@@ -19,6 +19,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $this->bootstrap('layout');
         $view = $this->getResource('layout')->getView();
         
+        $front = $this->getResource('frontController');
+        $front->setRequest(new Zend_Controller_Request_Http());
+        
         //Set initial helpers
         $view->doctype('HTML5');
         
@@ -34,6 +37,9 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->appendStylesheet($view->baseUrl('_styles/bootstrap.min.css'))
              ->appendStylesheet($view->baseUrl('_styles/main.less'), 'screen', true, array('rel' => 'stylesheet/less'));
                 
+        $view->headScript()
+             ->appendFile($view->baseUrl('_scripts/lib/modernizr.min.js'));
+        
         $view->inlineScript()
              //->appendFile($view->baseUrl('_scripts/redirect-fix.js'))
              ->appendFile($view->baseUrl('_scripts/less-config.js'))
@@ -43,7 +49,8 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
              ->appendFile($view->baseUrl('_scripts/lib/jquery.mobile-1.3.1.min.js'))
              ->appendFile('http://maps.googleapis.com/maps/api/js?key=AIzaSyBhvrjN0Qel85m8tyVH1h_WCqoGnyRzDVk&sensor=true')
              ->appendFile($view->baseUrl('_scripts/lib/jquery.ui.map.min.js'))
-             ->appendFile($view->baseUrl('_scripts/main.js'));;
+             ->appendFile($view->baseUrl('_scripts/main.js'))
+             ->appendFile($view->baseUrl('_scripts/spotter.js'));
     }
     
     // Custom Helpers
@@ -62,6 +69,5 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         $nav = new Zend_Navigation($config);
         $view->navigation($nav);
     }
-    
 }
 

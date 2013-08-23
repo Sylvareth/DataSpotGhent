@@ -21,7 +21,7 @@ class ErrorController extends Zend_Controller_Action
                 $priority = Zend_Log::NOTICE;
                 $this->view->error_code = $this->getResponse()->getHttpResponseCode();
                 $this->view->message = "Page Not Found";
-                $this->renderScript('error/error_404.phtml');
+                //$this->renderScript('error/error_404.phtml');
                 break;
             default:
                 // application error
@@ -70,4 +70,3 @@ class ErrorController extends Zend_Controller_Action
 
 
 }
-

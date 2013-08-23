@@ -17,25 +17,37 @@ $(document).on('pageshow', function(){
         $('#reg-form').attr('data-ajax', 'true');
     }
     
+    $('#map-controls ul li a').on("click", function(e){
+        e.preventDefault();
+        $(this).removeClass('btn-default')
+               .addClass('btn-primary')
+               .css('color', '#FFF')
+               .parent().siblings().children()
+               .removeClass('btn-primary')
+               .addClass('btn-default')
+               .css('color', '#2489ce');
+    });
+    
     // Custom CSS
     $('#profile-content input[readonly="readonly"]').parent().parent().prev().css('color', '#666');
     
-    // REFRESH MAP ON PAGE SHOW BECAUSE SOMETIMES IT DOESN'T LOAD COMPLETELY AFTER POSTBACK
-    // THIS VERY COMMON JQUERY MOBILE BUG(!)
-    $('#map-canvas').gmap('refresh');
 });
 
 // SOMETIMES LOAD MAP TWICE(!) TO PREVENT BREAKING WITH JQUERY MOBILE / ZEND
-// LOAD MAP AFTER PAGE INIT
-$(document).on("pageload", function(){
-    // REFRESH AGAIN AFTER LOAD, BUT BEFORE INITIALISING
-    $('#map-canvas').gmap('refresh');
-    initialize();
+// LOAD MAP AFTER PAGE SHOW
+$(document).on("pageshow", function(){
+    if ($('#map-canvas').length) {
+        // REFRESH MAP TO PREVENT GREY AREA AND/OR DEFAULT LOCATION
+        $('#map-canvas').gmap('refresh');
+        initialize();
+    }
 });
 
-// LOAD MAP AFTER POSTBACK/REFRESH
+// LOAD MAP AFTER POSTBACK/REFRESH, BUT ONLY WHEN CONTAINER EXISTS
 $(document).ready(function(){
-    initialize();
+    if ($('#map-canvas').length) {
+        initialize();
+    }
 });
 
 //==================================FUNCTIONS=================================//
@@ -48,14 +60,14 @@ function initialize(){
     
     // MAP OPTIONS
     var mapOptions = {
-        zoom: 11,
+        zoom: 14,
         center: _mymapLocation,
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     
     // CREATE GOOGLE MAP
     _mymap = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
- 
+  
     // GET MY GEOLOCATION
     google.maps.event.addListenerOnce(_mymap, 'idle', function(){
         getGeoLocation();
@@ -109,6 +121,8 @@ function handleNoGeoLocation(error){
         content: content
     };
     
+    console.log(_mymapLocation);
+    
     var infoWindow = new google.maps.InfoWindow(mapOptions);
-    map.setCenter(mapOptions.position);
+    _mymap.setCenter(mapOptions.position);
 }

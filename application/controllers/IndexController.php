@@ -31,7 +31,7 @@ class IndexController extends Zend_Controller_Action
 
     public function overAction()
     {
-        
+        // action body
     }
 
     public function loginAction()
