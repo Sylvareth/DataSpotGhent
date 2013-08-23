@@ -2,14 +2,27 @@ var _baseUrl = "/DataSpotGhent/public/";
 var _data = {};
 var _coordinates = [];
 var _locations = [];
+var _datasetToLoad;
+var markersArray = [];
 
-$(document).ready(function(){
-    //localStorage.clear();
+function locate(str)
+{
+    // Clear Localstorage
+    // localStorage.clear();
     
-    // Load datasets
+    // Reset global variables
+    _data.length = 0;
+    _coordinates.length = 0;
+    _locations.length = 0;
+    
+    // Remove all markers
+    clearOverlays();
+    
+    // Detect which button was clicked
+    _datasetToLoad = str;
+    
     loadDatasets();
-    getCoordinates();
-});
+}
 
 function loadDatasets()
 {
@@ -17,45 +30,46 @@ function loadDatasets()
     var flag = false;
     
     // Check if browser has localstorage support
-    if (Modernizr.localstorage) 
+    if (Modernizr.localstorage)
     {
         flag = getData();
-    } else {
-        console.log("This browser does not support localStorage");
-    }
     
-    if (!flag)
-    {
-        $.getJSON(_baseUrl + 'dataset/parkings', {}, function(data, status, jqXHR)
-        {
-            saveData(data);
-        });
+        if (!flag)
+        {   
+            // Cache JSON file in localstorage on first click.
+            // Every subsequent click gets the data right from the storage 
+            // (the save function won't be called then)
+            $.getJSON(_baseUrl + 'dataset/' + _datasetToLoad, {}, function(data)
+            {
+                saveData(data);
+                console.log(_datasetToLoad + " Saved!");
+            });
+        }
     }
 }
 
 function getData()
 {
-    //Check if there are parkings in localstorage
-    if(localStorage.getItem("dataspotghent.parkings") !== null){
-        console.log("There are Parkings!");
-        
+    if(localStorage.getItem("dataspotghent." + _datasetToLoad) !== null)
+    {                
         // Take the JSON string and return Javascript Object
-        _data = $.parseJSON(localStorage["dataspotghent.parkings"]);
+        _data = $.parseJSON(localStorage["dataspotghent." + _datasetToLoad]);
+        getCoordinates();
+        getLocations();
 
         return true;
-    } else {
+    } else 
+    {
         return false;
     }
 }
 
 function saveData(data)
-{
-    // If localstorage is supported, convert string to JSON and save data to localstorage.
-    if (Modernizr.localstorage) 
-    {
-        console.log("Data Saved!");
-        localStorage["dataspotghent.parkings"] = JSON.stringify(data);
-    }
+{    
+    // console.log(data);
+    localStorage["dataspotghent." + _datasetToLoad] = JSON.stringify(data);
+    
+    getData();
 }
 
 function getCoordinates()
@@ -70,17 +84,15 @@ function getCoordinates()
         }
         
         _coordinates.push(mark);
-        
     }   
-    
 }
 
-function locateParkings()
+function getLocations()
 {
     for (i = 0; i < _coordinates.length; i++) {
         var row = _coordinates[i];
         
-        console.log(row);
+        // console.log(row);
         var longitude = row["lng"];
         var latitude = row["lat"];
         
@@ -92,7 +104,7 @@ function locateParkings()
 
 function setMarkers(_mymap, _locations)
 {
-    console.log(_locations);
+    // console.log(_locations);
     
     for (i = 0; i < _locations.length; i++) {
         var markerLatLng = _locations[i];
@@ -101,5 +113,13 @@ function setMarkers(_mymap, _locations)
             position: markerLatLng,
             map: _mymap
         });
+        markersArray.push(marker);
     }
+}
+
+function clearOverlays() {
+  for (var i = 0; i < markersArray.length; i++ ) {
+    markersArray[i].setMap(null);
+  }
+  markersArray = [];
 }
