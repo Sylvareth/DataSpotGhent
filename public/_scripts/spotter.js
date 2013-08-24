@@ -4,6 +4,7 @@ var _coordinates = [];
 var _locations = [];
 var _datasetToLoad;
 var markersArray = [];
+var geocoder = new google.maps.Geocoder();;
 
 function locate(str)
 {
@@ -106,13 +107,50 @@ function setMarkers(_mymap, _locations)
 {
     // console.log(_locations);
     
+    var infowindow = new google.maps.InfoWindow;
+    
+    
+    var myMarkerImage = {
+        url: "images/custom-markers/" + _datasetToLoad + ".png",
+        size: new google.maps.Size(48,48)
+    } 
+        
     for (i = 0; i < _locations.length; i++) {
         var markerLatLng = _locations[i];
         
+        var content = "";
+        
         var marker = new google.maps.Marker({
             position: markerLatLng,
-            map: _mymap
+            map: _mymap,
+            icon: myMarkerImage,
+            title: 'Click to zoom'
         });
+        
+        google.maps.event.addListener(marker, 'click', function(){
+            geocoder.geocode({
+                'latLng': this.position
+            }, function(results, status){
+                if(status == google.maps.GeocoderStatus.OK)
+                {
+                    if (results[0]) 
+                    {
+
+                        content = "<p class='infowindow-text'>"+ results[0].formatted_address +"</p>"
+
+                    }
+                }
+            });
+            
+            _mymap.panTo(this.position);
+            _mymap.setZoom(15);
+            
+            infowindow.setContent(content);
+            infowindow.open(_mymap, this);
+            //console.log(this.position.nb);
+            //console.log(this);
+        });
+        
         markersArray.push(marker);
     }
 }
