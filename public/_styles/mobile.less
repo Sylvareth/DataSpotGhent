@@ -1,0 +1,223 @@
+.rounded(@radius: 5px)
+{   -moz-border-radius: @radius;
+    -webkit-border-radius: @radius;
+    border-radius: @radius;}
+
+/*=======================================GENERAL STYLES==========================================
+===============================================================================================*/
+
+section[data-role="content"]
+{   padding-bottom: 60px;}
+
+#logo
+    {   display: none;}
+
+#popup-login
+{   position: absolute;
+    border: none !important;
+    height: 31px;
+    z-index: 9999;
+    .rounded(0);
+    top: 0;
+    right: 0;
+    height: 39px;
+    background: #444;
+    -moz-box-shadow:    none;
+    -webkit-box-shadow: none;
+    box-shadow:         none;
+
+    .ui-btn-inner
+    {   font-size: 16px;
+        padding: 8px 10px;}
+}
+
+#popup-login:hover
+{   color: #d58e48;}
+
+.login-widget
+{   background: #444;
+
+    .ui-btn-right
+    {   display: block;}
+
+    dl
+    {   margin-bottom: 5px;}
+
+    div.ui-input-text input.ui-input-text
+    {   padding: 0.4em 0.4em;}
+
+    ul.errors
+    {   list-style: none;
+        color: red;}
+
+    .ui-submit
+    {   width: 100%;
+        margin: 8px 0;}
+}
+
+.ui-btn-icon-notext .ui-btn-inner .ui-icon
+{   margin: 1px 1px 2px 2px;}
+
+a.dropdown-toggle
+{   padding: 0;
+    background: #444;
+    display: block;
+    border: none;
+    color: #FFF;
+    margin: 0;
+    height: 39px;
+    width: 120px;
+    .rounded(0);
+
+    .ui-btn-inner
+    {   font-size: 18px;}
+}
+
+a.dropdown-toggle:hover
+{   color: #d58e48;}
+
+header
+{   padding: 0;}
+
+header nav
+{   background: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9998;
+    margin: 0;
+
+    .dropdown-toggle:hover, 
+    .btn:focus,
+    .dropdown-menu>.active>a, 
+    .dropdown-menu>.active>a:hover, 
+    .dropdown-menu>.active>a:focus
+    {   color: #d58e48;}
+
+    p
+    {   display: none;}
+    
+    ul li
+    {   width: 100%;}
+    
+    .dropdown-menu
+    {   background: #444;
+        .rounded(0);}
+
+    .dropdown-menu>li>a
+    {   color: #FFF;
+        height: 40px;}
+
+    .dropdown-menu>.active>a
+    {   background-color: transparent;}
+    
+    .dropdown-menu>li>a:hover, 
+    .dropdown-menu>.active>a:hover
+    {   background-color: transparent;
+        height: 40px;
+        color: #d58e48;}
+}
+
+#map-controls
+{   width: 40%;
+    min-width: 200px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    z-index: 20;
+    margin: 0;
+    padding: 0;
+    background: none;
+
+    .dropdown-toggle
+    {   position: absolute;
+        bottom: 0;
+        font-size: 18px;
+        text-align: center;
+        padding: 5px 0;}
+
+    .dropdown-menu
+    {   margin-top: -253px;
+        .rounded(0);
+        background: #444;
+        width: 320px;
+
+        li
+        {   width: 150px;
+            margin-left: 5px;
+            display: inline-block;
+
+            a:hover
+            {   background-color: #ebebeb;}
+        }
+    }
+
+    h1
+    {   display: none;}
+
+}
+
+#map-canvas
+{   width: 100%;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;}
+
+footer.ui-footer
+{   position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+    .rounded(0);
+
+    p
+    {   font-size: 10px;
+        width: 200px;
+        float: right;
+        margin: 5px 10px;}
+}
+
+#registration-div
+{   width: 100%;
+    margin: 0;
+    
+    img
+    {   display: none;}
+
+    h1, 
+    form, 
+    input, 
+    #reg-form input[type="text"], 
+    #emailchange-form input[type="text"], 
+    #reg-form input[type="password"], 
+    #emailchange-form input[type="password"]
+    {   width: 100%;}
+
+}
+
+#profile-content, #editemail-content
+{   width: 100%;
+    
+    h1,  
+    form, 
+    input, 
+    #reg-form input[type="text"], 
+    #emailchange-form input[type="text"], 
+    #reg-form input[type="password"], 
+    #emailchange-form input[type="password"],
+    div.ui-input-text
+    {   width: 100%;}
+
+    #username-message
+    {   display: none;}
+
+    .extra-info
+    {   position: static;}
+}
+
+#reg-form div.ui-submit .ui-btn-inner, 
+#emailchange-form div.ui-submit .ui-btn-inner
+{   font-size: 15px;}

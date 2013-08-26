@@ -30,7 +30,6 @@ $(document).on('pageshow', function(){
     
     // Custom CSS
     $('#profile-content input[readonly="readonly"]').parent().parent().prev().css('color', '#666');
-    
 });
 
 // SOMETIMES LOAD MAP TWICE(!) TO PREVENT BREAKING WITH JQUERY MOBILE / ZEND
@@ -41,6 +40,36 @@ $(document).on("pageshow", function(){
         $('#map-canvas').gmap('refresh');
         initialize();
     }
+});
+
+$(document).on("pageinit", function(){
+    //===============================================================================//
+    //=================================MEDIA QUERIES=================================//
+    //===============================================================================//
+    $('a[data-rel="popup"]').hide();
+    
+    enquire.register("screen and (max-width:660px)", 
+    {
+        deferSetup: true,
+        match: function()
+        {
+          $('.navigation').removeClass().addClass('dropdown-menu');
+          $('#map-controls a[data-toggle="dropdown"]').removeClass('ui-link btn');
+          $('#map-controls ul').addClass('dropdown-menu');
+          $('nav').attr('data-role', '').removeClass().addClass('btn-group');
+          $('a[data-rel="popup"]').show();
+          $('.login-widget').attr(
+            {
+                'data-role': 'popup',
+                'data-position-to': 'window'
+            }).addClass('ui-content');
+          $(".login-widget[data-role='popup']").popup();
+        },
+        unmatch: function()
+        {
+          $('.login-widget').attr('data-role', '');
+        }
+    });
 });
 
 // LOAD MAP AFTER POSTBACK/REFRESH, BUT ONLY WHEN CONTAINER EXISTS
@@ -62,7 +91,9 @@ function initialize(){
     var mapOptions = {
         zoom: 12,
         center: _mymapLocation,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        panControl: false,
+        zoomControl: false
     };
     
     // CREATE GOOGLE MAP

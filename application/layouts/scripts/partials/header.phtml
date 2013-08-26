@@ -2,8 +2,22 @@
                 
     <a id="logo" href="<?=$this->url(array('controller'=>'index', 'action'=>'index'), null, true)?>"><img src="<?=$this->baseUrl('images/logo.png')?>" alt="Dataspot Ghent" /></a>
 
-    <div class="login-widget">
-
+    
+    <a href="#popupBasic" data-rel="popup" id="popup-login">
+        <?php 
+            $auth = Zend_Auth::getInstance(); 
+            if($auth->getIdentity())
+            {
+                echo 'Welkom | Beheer';
+            } else 
+            {
+                echo 'Inloggen | Registreren';
+            } 
+        ?>
+    </a>
+    <div class="login-widget" id="popupBasic">
+        <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+        
         <?php echo $this->loggedIn();?>
 
         <a class="login-register-btn" data-role="button" title="Registreer Nu" href="<?=$this->url(array('controller'=>'auth', 'action'=>'register'), null, true)?>">Registreren</a>
@@ -17,6 +31,10 @@
 
     <nav data-role="navbar">
 
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+            Navigatie
+            <span class="caret"></span>
+        </a>
         <p>Spot nu de meest interessante locaties in Gent.</p>
         <?php echo $this->navigation()->menu(); ?>
 

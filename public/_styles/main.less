@@ -73,6 +73,9 @@ a, a:hover
 .text-success
 {   color: #15D115;}
 
+a.dropdown-toggle
+{   display: none;}
+
 /*============================================HEADER=============================================
 ===============================================================================================*/
 header.ui-bar-a, header a#logo, header a#logo .ui-btn-inner, header nav ul li a
@@ -83,6 +86,7 @@ header
 
     a#logo
     {   position: static;
+        margin-left: 5px;
         background: none;
         box-shadow: none;
         -moz-box-shadow: none;
@@ -149,6 +153,9 @@ header
         top: 8px;
         right: 15px;
         width: 274px;
+
+        .ui-btn-right
+        {   display: none;}
         
         ul
         {   margin: 0;}
@@ -183,7 +190,8 @@ header
             font-size: 12px;}
 
         div.ui-input-text
-        {   padding: 0 6px;}
+        {   padding: 0 6px;
+            margin-bottom: 2px;}
 
         .logged-in
         {   margin-top: 10px;
@@ -235,10 +243,11 @@ header
 
 /*========================================DATASPOT PAGE==========================================
 ===============================================================================================*/
-.content-home, #datagraph-content
+.content-home
 {   height: 100%;
     width: 100%;
-    padding: 0;}
+    padding: 0;
+    margin: 0 10px;}
 
 #map-controls
 {   width: 28%;
@@ -265,7 +274,7 @@ header
     left: 32%;
     top: 184px;
     bottom: 85px;
-    right: 14px;
+    right: 24px;
     display: inline-block;
     vertical-align: top;
     margin-right: 2px;
@@ -276,8 +285,18 @@ header
 
 /*=======================================DATAGRAPH PAGE==========================================
 ===============================================================================================*/
-#datagraph-content
-{   .background(); }
+#datagraph-section
+{   .background();
+    width: 100%;
+    margin: 0;
+     
+    h1
+    {   padding: 10px;}
+
+    a.btn
+    {   margin: 10px;
+        display: block;}
+}
 
 
 /*=========================================LOGIN PAGE============================================
@@ -331,7 +350,7 @@ header
 
     input[type="text"], input[type="password"]
     {   height: 25px;
-        width: 337px;
+        width: 348px;
         font-size: 14px;
         padding: 0 0.4em;
         border: 1px solid #aaa;}
@@ -404,7 +423,7 @@ header
 
     .extra-info
     {   position: absolute;
-        top: 209px;
+        top: 202px;
         right: 15px;
     
         a:hover
@@ -427,11 +446,9 @@ header
     h1
     {   border-bottom: 1px dashed @secondary_color;}
 
-    div.ui-input-text
-    {   width: 379px;}
-
+    div.ui-input-text,
     input[type="text"]
-    {   width: 367px;}
+    {   width: 352;}
 
     .text-success
     {   margin-top: 15px;}
